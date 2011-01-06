@@ -1,26 +1,47 @@
 #summary explain the concept of daily-money
 
 = Introduction =
-
+<p>
 This page shows concept of daily-money, since it is android application, I will keep every thing as simple as possible.
-
-
-= Details =
-
+</p>
+<p>
 The basic idea is money was transfered from one account to another, user record the detail for each transfer with his android phone. This application helps user to record detail, shows weekly/monthly/weekly report and mails csv through the android phone.
+</p>
 
+= Account Type = 
+<p>
 Currently. There are 3 types of account type:
  * Income
  * Expense
  * Asset
  * ~~Debt~~ (todo)
  * ~~Other~~ (todo)
-Asset, Debt and Other are special account has a initial value(money).
+</p>
 
+= Account =
+<p>
+User can create multiple account with a name , initial value and account type, if type of an account is Asset, Debt or Other, it will has a initial value(money) for counting.
+</p>
+
+= Detail =
+<p>
 For each daily-money detail record, user have to fill following data in phone.
  * date
  * from account
  * to account
  * value (money)
  * note
+</p>
 
+= Rules of counting =
+<p>
+ * INCOME = Σ Detail.value(FROM is income)
+ * EXPENSE = Σ Detail.value(TO is expense)
+ * ASSET = Σ Account.initialValue(TYPE is asset) + Σ Detail.value(TO is asset) - Σ Detail.value(FROM is asset)
+</p>
+<p>
+all archived Details are not editable and not included in counting.
+</p>
+<p>
+the initial value of Asset type account will be updated after Details archived.
+</p>
