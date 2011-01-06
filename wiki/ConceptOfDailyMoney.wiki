@@ -1,0 +1,26 @@
+#summary explain the concept of daily-money
+
+= Introduction =
+
+This page shows concept of daily-money, since it is android application, I will keep every thing as simple as possible.
+
+
+= Details =
+
+The basic idea is money was transfered from one account to another, user record the detail for each transfer with his android phone. This application helps user to record detail, shows weekly/monthly/weekly report and mails csv through the android phone.
+
+Currently. There are 3 types of account type:
+ * Income
+ * Expense
+ * Asset
+ * ~~Debt~~ (todo)
+ * ~~Other~~ (todo)
+Asset, Debt and Other are special account has a initial value(money).
+
+For each daily-money detail record, user have to fill following data in phone.
+ * date
+ * from account
+ * to account
+ * value (money)
+ * note
+
