@@ -3,7 +3,7 @@ This is a android application project, the goal of this application are:
  * Shows monthly/year report
  * Exports csv or excel
 
-ConceptOfDailyMoney
+[ConceptOfDailyMoney Concept of daily-money]
 
 
 =Screenshoot=
@@ -37,3 +37,5 @@ http://daily-money.googlecode.com/svn/wiki/img/prefs.png
 </p>
 
 =Download=
+you can down apk file here : 
+http://code.google.com/p/daly-money/downloads/list
