@@ -1,0 +1,39 @@
+This is a android application project, the goal of this application are:
+ * Records your daily money spend.
+ * Shows monthly/year report
+ * Exports csv or excel
+
+ConceptOfDailyMoney
+
+
+=Screenshoot=
+<p>
+===Main screen===
+http://daily-money.googlecode.com/svn/wiki/img/main.png
+</p>
+<p>
+===Detail list, weekly, monthly, yearly===
+http://daily-money.googlecode.com/svn/wiki/img/detlist.png
+</p>
+<p>
+===Add/update detail===
+http://daily-money.googlecode.com/svn/wiki/img/deteditor.png
+</p>
+<p>
+===Account management===
+http://daily-money.googlecode.com/svn/wiki/img/accmgnt.png
+</p>
+<p>
+===Account editor===
+http://daily-money.googlecode.com/svn/wiki/img/acceditor.png
+</p>
+<p>
+==Data maintenance==
+http://daily-money.googlecode.com/svn/wiki/img/datamain.png
+</p>
+<p>
+===Preference===
+http://daily-money.googlecode.com/svn/wiki/img/prefs.png
+</p>
+
+=Download=
