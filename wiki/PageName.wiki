@@ -12,4 +12,7 @@ Add your content here.  Format your content with:
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
 
-http://code.google.com/p/daily-money/wiki/img/acceditor.png
+http://daily-money.googlecode.com/svn/trunk/dailymoney/res/drawable/android.png
+
+http://daily-money.googlecode.com/svn/wiki/img/prefs.png
+http://daily-money.googlecode.com/svn/wiki/img/acceditor.png
