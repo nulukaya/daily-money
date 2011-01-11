@@ -38,7 +38,7 @@ For each daily-money detail record, user have to fill following data in phone.
  * INCOME = Σ Detail.value(FROM is income)
  * EXPENSE = Σ Detail.value(TO is expense)
  * ASSET = Σ Account.initialValue(TYPE is asset) + Σ Detail.value(TO is asset) - Σ Detail.value(FROM is asset)
- * Liability = Σ Account.initialValue(TYPE is liability) + Σ Detail.value(TO is liability) - Σ Detail.value(FROM is liability)
+ * LIABILITY = Σ Account.initialValue(TYPE is liability) + Σ Detail.value(TO is liability) - Σ Detail.value(FROM is liability)
 </p>
 <p>
 all archived Details are not editable and not included in counting.
