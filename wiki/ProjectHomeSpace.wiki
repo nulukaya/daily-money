@@ -12,31 +12,26 @@ Or, from appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dail
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
 =Screenshoot=
-<p>
+<table><tr><td>
 ===Main screen===
 http://daily-money.googlecode.com/svn/wiki/img/main.png
-</p>
-<p>
+</td><td>
 ===Detail list, weekly, monthly, yearly===
 http://daily-money.googlecode.com/svn/wiki/img/detlist.png
-</p>
-<p>
+</td><td>
 ===Add/update detail===
 http://daily-money.googlecode.com/svn/wiki/img/deteditor.png
-</p>
-<p>
+</td></tr><tr><td>
 ===Account management===
 http://daily-money.googlecode.com/svn/wiki/img/accmgnt.png
-</p>
-<p>
+</td><td>
 ===Account editor===
 http://daily-money.googlecode.com/svn/wiki/img/acceditor.png
-</p>
-<p>
+</td><td>
 ==Data maintenance==
 http://daily-money.googlecode.com/svn/wiki/img/datamain.png
-</p>
-<p>
+</td></tr><tr><td>
 ===Preference===
 http://daily-money.googlecode.com/svn/wiki/img/prefs.png
-</p>
+</td><td></td><td></td>
+</tr></table>
