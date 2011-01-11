@@ -7,7 +7,7 @@ This is a android application project, the goal of this application are:
 
 
 =Download=
-You can download apk file here : http://code.google.com/p/daly-money/downloads/list <br/>
+You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
 Or, from appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
