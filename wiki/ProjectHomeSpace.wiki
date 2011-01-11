@@ -6,6 +6,11 @@ This is a android application project, the goal of this application are:
 [ConceptOfDailyMoney Concept of daily-money]
 
 
+=Download=
+You can download apk file here : http://code.google.com/p/daly-money/downloads/list <br/>
+Or, from appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
+http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
+
 =Screenshoot=
 <p>
 ===Main screen===
@@ -35,7 +40,3 @@ http://daily-money.googlecode.com/svn/wiki/img/datamain.png
 ===Preference===
 http://daily-money.googlecode.com/svn/wiki/img/prefs.png
 </p>
-
-=Download=
-you can down apk file here : 
-http://code.google.com/p/daly-money/downloads/list
