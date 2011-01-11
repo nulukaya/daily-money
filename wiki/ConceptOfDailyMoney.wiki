@@ -14,13 +14,13 @@ Currently. There are 3 types of account type:
  * Income
  * Expense
  * Asset
- * ~~Debt~~ (todo)
+ * ~~Liability~~ (todo)
  * ~~Other~~ (todo)
 </p>
 
 = Account =
 <p>
-User can create multiple account with a name , initial value and account type, if type of an account is Asset, Debt or Other, it will has a initial value(money) for counting.
+User can create multiple account with a name , initial value and account type, if type of an account is Asset, Liability or Other, it will has a initial value(money) for counting.
 </p>
 
 = Detail =
@@ -38,6 +38,7 @@ For each daily-money detail record, user have to fill following data in phone.
  * INCOME = Σ Detail.value(FROM is income)
  * EXPENSE = Σ Detail.value(TO is expense)
  * ASSET = Σ Account.initialValue(TYPE is asset) + Σ Detail.value(TO is asset) - Σ Detail.value(FROM is asset)
+ * Liability = Σ Account.initialValue(TYPE is liability) + Σ Detail.value(TO is liability) - Σ Detail.value(FROM is liability)
 </p>
 <p>
 all archived Details are not editable and not included in counting.
