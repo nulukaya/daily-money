@@ -33,5 +33,9 @@ http://daily-money.googlecode.com/svn/wiki/img/datamain.png
 </td></tr><tr><td>
 ===Preference===
 http://daily-money.googlecode.com/svn/wiki/img/prefs.png
-</td><td></td><td></td>
+</td><td>
+===Reports===
+http://daily-money.googlecode.com/svn/wiki/img/report.png</td><td>
+===Balance===
+http://daily-money.googlecode.com/svn/wiki/img/balance1.png</td>
 </tr></table>
