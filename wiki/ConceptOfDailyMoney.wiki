@@ -10,38 +10,47 @@ The basic idea is money was transfered from one account to another, user record 
 
 = Account Type = 
 <p>
-Currently. There are 3 types of account type:
+There are 5 types of account type:
  * Income
  * Expense
  * Asset
- * ~~Liability~~ (todo)
- * ~~Other~~ (todo)
+ * Liability
+ * Other
 </p>
 
 = Account =
 <p>
-User can create multiple account with a name , initial value and account type, if type of an account is Asset, Liability or Other, it will has a initial value(money) for counting.
+User can create multiple account with a name , initial value, account type and initial value(money) for total balance counting.
 </p>
 
-= Detail =
+= Detail/Transaction =
 <p>
-For each daily-money detail record, user have to fill following data in phone.
+For each daily-money detail record, user have to fill following data.
  * date
  * from account
  * to account
  * value (money)
  * note
 </p>
-
-= Rules of counting =
+= Rules of single month/year balance counting =
 <p>
- * INCOME = Σ Detail.value(FROM is income)
- * EXPENSE = Σ Detail.value(TO is expense)
- * ASSET = Σ Account.initialValue(TYPE is asset) + Σ Detail.value(TO is asset) - Σ Detail.value(FROM is asset)
- * LIABILITY = Σ Account.initialValue(TYPE is liability) + Σ Detail.value(TO is liability) - Σ Detail.value(FROM is liability)
+ * INCOME = ΣFrom Detail.value
+ * EXPENSE = ΣTo Detail.value
+ * ASSET = ΣTo Detail.value - ΣFrom Detail.value
+ * LIABILITY = ΣFrom Detail.value - ΣTo Detail.value
+ * OTHER = = ΣTo Detail.value - ΣFrom Detail.value
+</p>
+
+= Rules of total balance counting =
+<p>
+ * INCOME = Σinit + ΣFrom Detail.value
+ * EXPENSE = Σinit + ΣTo Detail.value
+ * ASSET = Σinit + ΣTo Detail.value - ΣFrom Detail.value
+ * LIABILITY = Σinit + ΣFrom Detail.value - ΣTo Detail.value
+ * OTHER = = Σinit + ΣTo Detail.value - ΣFrom Detail.value
 </p>
 <p>
-all archived Details are not editable and not included in counting.
+all archived Details are not editable and not included in total balance counting.
 </p>
 <p>
 the initial value of Asset type account will be updated after Details archived.
