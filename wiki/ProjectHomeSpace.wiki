@@ -1,14 +1,19 @@
-This is a android application project, the goal of this application are:
- * Records your daily money spend.
- * Shows monthly/year report
- * Exports csv or excel
+This is a simple & easy financial android application.
 
 [ConceptOfDailyMoney Concept of daily-money]
 
+=Features=
+ * Record your daily expense, income, asset and liability.
+ * Show balance of money.
+ * Export/Import to CSV
+ * Money balance
+
+=Todo=
+ * Chart
 
 =Download=
-You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
-Or, from appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
+ * You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
+ * From appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
 =Screenshoot=
