@@ -44,3 +44,7 @@ http://daily-money.googlecode.com/svn/wiki/img/report.png</td><td>
 ===Balance===
 http://daily-money.googlecode.com/svn/wiki/img/balance1.png</td>
 </tr></table>
+
+=Author=
+Dennis Chen <br/>
+Blog : http://www.javaworld.com.tw/roller/atticcat/category/Android
