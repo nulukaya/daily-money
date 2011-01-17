@@ -16,6 +16,9 @@ This is a simple & easy financial android application.
  * From appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
+=Website=
+http://www.facebook.com/pages/Daily-Money/100393240038469
+
 =Screenshoot=
 <table><tr><td>
 ===Main screen===
