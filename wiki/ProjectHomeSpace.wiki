@@ -51,6 +51,7 @@ http://daily-money.googlecode.com/svn/wiki/img/balance1.png</td>
 
 =3rd source/library=
  * Calculator : from android 2.1 example code.
+ * Chart : http://code.google.com/p/achartengine/
  * Chart : http://code.google.com/p/chartdroid/
 
 =Author=
