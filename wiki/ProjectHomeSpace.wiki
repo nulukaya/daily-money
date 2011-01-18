@@ -48,6 +48,12 @@ http://daily-money.googlecode.com/svn/wiki/img/report.png</td><td>
 http://daily-money.googlecode.com/svn/wiki/img/balance1.png</td>
 </tr></table>
 
+
+=3rd source/library=
+ * Calculator : from android 2.1 example code.
+ * Chart : http://code.google.com/p/chartdroid/
+
 =Author=
-Dennis Chen <br/>
-Blog : http://www.javaworld.com.tw/roller/atticcat/category/Android
+==Dennis Chen==
+ * Blog : http://www.javaworld.com.tw/roller/atticcat/category/Android <br/>
+ * Linkedin : http://www.linkedin.com/in/dc214
