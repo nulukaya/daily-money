@@ -8,18 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,8 +21,6 @@ import android.widget.TextView;
 import com.bottleworks.commons.util.CalendarHelper;
 import com.bottleworks.commons.util.Formats;
 import com.bottleworks.commons.util.GUIs;
-import com.bottleworks.dailymoney.AccountDetailListActivity;
-import com.bottleworks.dailymoney.Constants;
 import com.bottleworks.dailymoney.R;
 import com.bottleworks.dailymoney.context.Contexts;
 import com.bottleworks.dailymoney.context.ContextsActivity;
@@ -44,7 +34,7 @@ import com.bottleworks.dailymoney.ui.NamedItem;
  * @author dennis
  * 
  */
-public class BalanceActivity extends ContextsActivity implements OnClickListener, OnItemClickListener {
+public class BalanceActivity extends ContextsActivity implements OnClickListener {
 
     public static final int MODE_MONTH = 0;
     public static final int MODE_YEAR = 1;
@@ -64,9 +54,6 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
 
     private DateFormat monthDateFormat;
     private DateFormat yearDateFormat;
-    
-    private Date currentStartDate;
-    private Date currentEndDate;
 
     ImageButton modeBtn;
 
@@ -88,7 +75,6 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_balance);
-        calHelper = Contexts.uiInstance().getCalendarHelper();
         initialIntent();
         initialContent();
         GUIs.delayPost(new Runnable() {
@@ -190,27 +176,26 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
                         tv.setTextColor(getResources().getColor(R.color.unknow_fgd));
                     }
                 }
-                adjustItem(tv,b,GUIs.getDPRatio(BalanceActivity.this));
+                adjustItem(tv,b,GUIs.geDPRatio(BalanceActivity.this));
                 return false;
             }});
         
         listView = (ListView) findViewById(R.id.report_balance_list);
         listView.setAdapter(listViewAdapter);
         
-        listView.setOnItemClickListener(this);
-        registerForContextMenu(listView);
+        
     }
 
     protected void adjustLayout(LinearLayout layout, Balance b) {
         switch(b.indent){
         case 0:
-            layout.setBackgroundDrawable((getResources().getDrawable(R.drawable.selector_balance_indent0)));
+            layout.setBackgroundDrawable((getResources().getDrawable(R.color.report_balance_indent0_bg)));
             break;
         case 1:
-            layout.setBackgroundDrawable((getResources().getDrawable(R.drawable.selector_balance_indent)));
+            layout.setBackgroundDrawable((getResources().getDrawable(R.color.report_balance_list_bg)));
             break;
         default:
-            layout.setBackgroundDrawable((getResources().getDrawable(R.drawable.selector_balance_indent)));
+            layout.setBackgroundDrawable((getResources().getDrawable(R.color.report_balance_list_bg)));
             break;    
         }
     }
@@ -230,12 +215,10 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
             break;
         case 1:
             ratio = 0.85F;
-            paddingTB = 3;
             marginLeft = 15;
             break;
         default:
             ratio = 0.75F;
-            paddingTB = 1;
             marginLeft = 25;
             break;    
         }
@@ -261,67 +244,46 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
         if(items.size()==0){
             return items;
         }
-        List<Balance> group = new ArrayList<Balance>(items);
         double total = 0;
         for (Balance b : items) {
             b.setIndent(1);
-            b.setGroup(group);
             total += b.money;
         }
-        Balance bt = new Balance(totalName,type.getType(), total,type);
+        Balance bt = new Balance(totalName,type.getType(), total);
         bt.setIndent(0);
-        bt.setGroup(group);
-        bt.setDate(items.get(0).getDate());
         items.add(0, bt);
         return items;
     }
 
-    private List<Balance> calBalance(AccountType type,Date start,Date end,boolean calInit) {
-        boolean nat = type==AccountType.INCOME||type==AccountType.LIABILITY;
+    private List<Balance> calBalance(AccountType type,Date start,Date end, boolean nat) {
         IDataProvider idp = Contexts.uiInstance().getDataProvider();
         List<Account> accs = idp.listAccount(type);
         List<Balance> blist = new ArrayList<Balance>();
         for (Account acc : accs) {
             double from = idp.sumFrom(acc, start, end);
             double to = idp.sumTo(acc, start, end);
-            double init = calInit?acc.getInitialValue():0;
-            double b = init + (nat?(from - to):(to - from));
-            Balance balance = new Balance(acc.getName(),type.getType(), b,acc);
-            balance.setDate(end);
+            double init = totalMode?acc.getInitialValue():0;
+            double b = init + to - from;
+            Balance balance = new Balance(acc.getName(),type.getType(), ((nat & b != 0) ? -b : b));
             blist.add(balance);
         }
         return blist;
     }
-    
-    private Balance calBalance(Account acc, Date start, Date end, boolean calInit) {
-        AccountType type = AccountType.find(acc.getType());
-        boolean nat = type == AccountType.INCOME || type == AccountType.LIABILITY;
-        IDataProvider idp = Contexts.uiInstance().getDataProvider();
-
-        double from = idp.sumFrom(acc, start, end);
-        double to = idp.sumTo(acc, start, end);
-        double init = calInit ? acc.getInitialValue() : 0;
-        double b = init + (nat ? (from - to) : (to - from));
-        Balance balance = new Balance(acc.getName(), type.getType(), b, acc);
-        balance.setDate(end);
-
-        return balance;
-    }
 
     private void reloadData() {
         final CalendarHelper cal = Contexts.uiInstance().getCalendarHelper();
-        currentEndDate = null;
-        currentStartDate = null;
+        final Date end;
+        final Date start;
         infoView.setText("");
         reloadToolbar();
         switch (mode) {
         case MODE_YEAR:
-            currentEndDate = cal.yearEndDate(currentDate);
-            currentStartDate = totalMode?null:cal.yearStartDate(currentDate);
+            end = cal.yearEndDate(currentDate);
+            start = totalMode?null:cal.yearStartDate(currentDate);
             break;
         default:
-            currentEndDate = cal.monthEndDate(currentDate);
-            currentStartDate = totalMode?null:cal.monthStartDate(currentDate);
+            end = cal.monthEndDate(currentDate);
+            start = totalMode?null:cal.monthStartDate(currentDate);
             break;
         }
         GUIs.doBusy(this, new GUIs.BusyAdapter() {
@@ -329,43 +291,26 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
 
             @Override
             public void run() {
-                List<Balance> asset = calBalance(AccountType.ASSET, currentStartDate, currentEndDate,totalMode);
-                asset = adjustTotalBalance(AccountType.ASSET, totalMode ? i18n.string(R.string.label_balance_tasset)
-                        : i18n.string(R.string.label_asset), asset);
+                List<Balance> income = calBalance(AccountType.INCOME, start,end, true);
+                income = adjustTotalBalance(AccountType.INCOME, i18n.string(R.string.label_balt_income), income);
+                all.addAll(income);
 
-                List<Balance> income = calBalance(AccountType.INCOME, currentStartDate, currentEndDate,totalMode);
-                income = adjustTotalBalance(AccountType.INCOME, totalMode ? i18n.string(R.string.label_balance_tincome)
-                        : i18n.string(R.string.label_income), income);
+                List<Balance> expense = calBalance(AccountType.EXPENSE, start,end, false);
+                expense = adjustTotalBalance(AccountType.EXPENSE, i18n.string(R.string.label_balt_expense), expense);
+                all.addAll(expense);
 
-                List<Balance> expense = calBalance(AccountType.EXPENSE, currentStartDate, currentEndDate,totalMode);
-                expense = adjustTotalBalance(
-                        AccountType.EXPENSE,
-                        totalMode ? i18n.string(R.string.label_balance_texpense) : i18n
-                                .string(R.string.label_expense), expense);
+                List<Balance> asset = calBalance(AccountType.ASSET,start, end, false);
+                asset = adjustTotalBalance(AccountType.ASSET, i18n.string(R.string.label_balt_asset), asset);
+                all.addAll(asset);
 
-                List<Balance> liability = calBalance(AccountType.LIABILITY, currentStartDate, currentEndDate,totalMode);
-                liability = adjustTotalBalance(
-                        AccountType.LIABILITY,
-                        totalMode ? i18n.string(R.string.label_balance_tliability) : i18n
-                                .string(R.string.label_liability), liability);
+                List<Balance> liability = calBalance(AccountType.LIABILITY, start,end, false);
+                liability = adjustTotalBalance(AccountType.LIABILITY, i18n.string(R.string.label_balt_liability),
+                        liability);
+                all.addAll(liability);
 
-                List<Balance> other = calBalance(AccountType.OTHER, currentStartDate, currentEndDate,totalMode);
-                other = adjustTotalBalance(AccountType.OTHER, totalMode ? i18n.string(R.string.label_balance_tother)
-                        : i18n.string(R.string.label_other), other);
-
-                if(totalMode){
-                    all.addAll(asset);
-                    all.addAll(liability);
-                    all.addAll(income);
-                    all.addAll(expense);
-                    all.addAll(other);
-                }else{
-                    all.addAll(income);
-                    all.addAll(expense);
-                    all.addAll(asset);
-                    all.addAll(liability);
-                    all.addAll(other);
-                }
+                List<Balance> other = calBalance(AccountType.OTHER, start,end, false);
+                other = adjustTotalBalance(AccountType.OTHER, i18n.string(R.string.label_balt_other), other);
+                all.addAll(other);
             }
 
             @Override
@@ -389,9 +334,9 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
                 // update info
                 if(totalMode){
                     if(mode==MODE_MONTH){
-                        infoView.setText(i18n.string(R.string.label_balance_mode_month_total, monthDateFormat.format(currentDate)));
+                        infoView.setText(i18n.string(R.string.label_balance_mode_month_total, monthDateFormat.format(end)));
                     }else if(mode==MODE_YEAR){
-                        infoView.setText(i18n.string(R.string.label_balance_mode_year_total, yearDateFormat.format(currentDate)));
+                        infoView.setText(i18n.string(R.string.label_balance_mode_year_total, yearDateFormat.format(end)));
                     }
                 }else{
                     if(mode==MODE_MONTH){
@@ -474,123 +419,6 @@ public class BalanceActivity extends ContextsActivity implements OnClickListener
             reloadData();
             break;
         }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if(parent == listView){
-            doBalancePieChart(position);
-        }
-    }
-    
-    private void doDetailList(int position) {
-        Balance b = listViewData.get(position);
-        
-        Intent intent = null;
-        intent = new Intent(this,AccountDetailListActivity.class);
-        if(currentStartDate !=null){
-            intent.putExtra(AccountDetailListActivity.INTENT_START,currentStartDate);
-        }
-        if(currentEndDate !=null){
-            intent.putExtra(AccountDetailListActivity.INTENT_END,currentEndDate);
-        }            
-        intent.putExtra(AccountDetailListActivity.INTENT_TARGET,b.getTarget());
-        intent.putExtra(AccountDetailListActivity.INTENT_TARGET_INFO,b.getName());
-        this.startActivityForResult(intent,Constants.REQUEST_ACCOUNT_DETAIL_LIST_CODE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == Constants.REQUEST_ACCOUNT_DETAIL_LIST_CODE && resultCode==Activity.RESULT_OK){
-            GUIs.delayPost(new Runnable(){
-                @Override
-                public void run() {
-                    reloadData();
-                }});
-        }
-    }
-    
-    
-    
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        if (v.getId() == R.id.report_balance_list) {
-//            AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;            
-            getMenuInflater().inflate(R.menu.balance_ctxmenu, menu);
-        }
-
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        switch (item.getItemId()) {
-        case R.id.balance_menu_piechart:
-            doBalancePieChart(info.position);
-            return true;
-        case R.id.balance_menu_account_yeartimechart:
-            doBalanceYearTimeChart(info.position);
-            return true;
-        case R.id.balance_menu_detlist:
-            doDetailList(info.position);
-            return true;
-        }
-        return super.onContextItemSelected(item);
-    }
-    
-    private void doBalancePieChart(int pos){
-        Balance b = listViewData.get(pos);
-        List<Balance> group = b.getGroup();
-        AccountType at;
-        if(b.target instanceof AccountType){
-            at = (AccountType)b.target;
-        }else{
-            //move selection to first
-            group = new ArrayList<Balance>(group);
-            group.remove(b);
-            group.add(0,b);
-            at = AccountType.find(((Account)b.target).getType());
-        }
-        Intent intent = new BalancePieChart(this,GUIs.getOrientation(this),GUIs.getDPRatio(this)).createIntent(at,group);
-        startActivity(intent);
-    }
-    
-    private void doBalanceYearTimeChart(int pos){
-        Balance b = listViewData.get(pos);
-        AccountType at;
-        List<Balance> group = b.getGroup();
-        if(b.target instanceof AccountType){
-            at = (AccountType)b.target;
-        }else{
-            group = new ArrayList<Balance>(group);
-            group.remove(b);
-            group.add(0,b);
-            at = AccountType.find(((Account)b.target).getType());
-        }
-        
-        List<List<Balance>> yearTimebalance = new ArrayList<List<Balance>>();
-        
-        
-        for(Balance g:group){
-            if(!(g.target instanceof Account)){
-                continue;
-            }
-            Account acc = (Account)g.target;
-            List<Balance> blist = new ArrayList<Balance>();
-            yearTimebalance.add(blist);
-            Date d = calHelper.yearStartDate(g.getDate());
-            for(int i=0;i<12;i++){
-                Balance balance = calBalance(acc, calHelper.monthStartDate(d),calHelper.monthEndDate(d), false);
-                blist.add(balance);
-                d = calHelper.monthAfter(d,1);
-            }
-        }
-        
-        Intent intent = new BalanceYearTimeChart(this,GUIs.getOrientation(this),GUIs.getDPRatio(this)).createIntent(
-                i18n.string(R.string.label_balance_account_yeartimechart,at.getDisplay(i18n),yearDateFormat.format(currentDate)),yearTimebalance);
-        startActivity(intent);
     }
 
 }

@@ -1,9 +1,5 @@
 package com.bottleworks.dailymoney.reports;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 /**
  * 
  * @author dennis
@@ -12,19 +8,16 @@ import java.util.List;
 public class Balance {
 
     String name;
+    
     String type;
     double money;
+    
     int indent;
-    Serializable target;
-    Date date;
 
-    List<Balance> group;
-
-    public Balance(String name, String type, double money, Serializable target) {
+    public Balance(String name, String type, double money) {
         this.name = name;
         this.type = type;
         this.money = money;
-        this.target = target;
     }
 
     public String getName() {
@@ -58,30 +51,7 @@ public class Balance {
     public void setType(String type) {
         this.type = type;
     }
-
-    public Serializable getTarget() {
-        return target;
-    }
-
-    public void setTarget(Serializable target) {
-        this.target = target;
-    }
-
-    public List<Balance> getGroup() {
-        return group;
-    }
-
-    public void setGroup(List<Balance> group) {
-        this.group = group;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     
+    
+
 }

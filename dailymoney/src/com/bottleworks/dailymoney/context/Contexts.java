@@ -27,6 +27,7 @@ import com.bottleworks.commons.util.Logger;
 import com.bottleworks.dailymoney.Constants;
 import com.bottleworks.dailymoney.R;
 import com.bottleworks.dailymoney.data.IDataProvider;
+import com.bottleworks.dailymoney.data.InMemoryDataProvider;
 import com.bottleworks.dailymoney.data.SQLiteDataProvider;
 import com.bottleworks.dailymoney.data.SQLiteHelper;
 
@@ -45,16 +46,13 @@ public class Contexts {
     private IDataProvider dataProvider;
     private I18N i18n;
     
-    @Deprecated
     boolean pref_useImpPovider = false;
-    
     int pref_detailListLayout = 2;
     int pref_maxRecords = -1;//-1 is no limit
     int pref_firstdayWeek = 1;//sunday
     boolean pref_openTestsDesktop = false;
     String pref_workingFolder = "bwDailyMoney";
     boolean pref_backupCSV = true;
-    String pref_password = "";
     
     private CalendarHelper calendarHelper = new CalendarHelper();
     
@@ -228,18 +226,6 @@ public class Contexts {
         try{
             pref_useImpPovider = prefs.getBoolean(Constants.PREFS_USE_INMENORY_PROVIDER, pref_useImpPovider);
         }catch(Exception x){Logger.e(x.getMessage());}
-        
-        try{
-            String pd1  = prefs.getString(Constants.PREFS_PASSWORD, pref_password);
-            String pd2  = prefs.getString(Constants.PREFS_PASSWORDVD, pref_password);
-            if(pd1.equals(pd2)){
-                pref_password = pd1;
-            }else{
-                pref_password = "";
-            }
-        }catch(Exception x){Logger.e(x.getMessage());}
-        
-        
         try{
             pref_detailListLayout = Integer.parseInt(prefs.getString(Constants.PREFS_DETAIL_LIST_LAYOUT, String.valueOf(pref_detailListLayout)));
         }catch(Exception x){Logger.e(x.getMessage());}
@@ -269,10 +255,6 @@ public class Contexts {
             Logger.d("preference : backup csv"+pref_backupCSV);
         }
         calendarHelper.setFirstDayOfWeek(pref_firstdayWeek);
-    }
-    
-    public String getPrefPassword(){
-        return pref_password;
     }
     
     public String getPrefWorkingFolder(){
@@ -319,8 +301,7 @@ public class Contexts {
 
     private void initDataProvider(Context context) {
         if(pref_useImpPovider){
-//            dataProvider = new InMemoryDataProvider();
-            dataProvider = new SQLiteDataProvider(new SQLiteHelper(context,"dm.db"),calendarHelper);
+            dataProvider = new InMemoryDataProvider();
         }else{
 //            dataProvider = new InMemoryDataProvider();
             dataProvider = new SQLiteDataProvider(new SQLiteHelper(context,"dm.db"),calendarHelper);

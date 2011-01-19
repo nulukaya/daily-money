@@ -9,7 +9,6 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,16 +30,19 @@ import com.bottleworks.dailymoney.context.ContextsActivity;
 import com.bottleworks.dailymoney.data.DataCreator;
 import com.bottleworks.dailymoney.data.IDataProvider;
 import com.bottleworks.dailymoney.ui.Desktop;
-import com.bottleworks.dailymoney.ui.Desktop.DesktopItem;
 import com.bottleworks.dailymoney.ui.MainDesktop;
 import com.bottleworks.dailymoney.ui.ReportsDesktop;
 import com.bottleworks.dailymoney.ui.TestsDesktop;
+import com.bottleworks.dailymoney.ui.Desktop.DesktopItem;
 /**
  * 
  * @author dennis
  *
  */
 public class DesktopActivity extends ContextsActivity implements OnTabChangeListener, OnItemClickListener {
+
+ 
+
     
     private String currTab = null;
 
@@ -48,16 +50,13 @@ public class DesktopActivity extends ContextsActivity implements OnTabChangeList
 
     private DesktopItemAdapter gridViewAdapter;
 
-    private List<Desktop> desktops = new ArrayList<Desktop>();
+    List<Desktop> desktops = new ArrayList<Desktop>();
     
-    private String appinfo;
+    String appinfo;
 
     private DateFormat dayOfWeekFormat = new SimpleDateFormat("EEEE"); 
     
-    private DesktopItem lastClickedItem;
-    
-    private static boolean protectionPassed = false;
-    private static boolean protectionInfront = false;
+    DesktopItem lastClickedItem;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,30 +66,10 @@ public class DesktopActivity extends ContextsActivity implements OnTabChangeList
         initialDesktopItem();
         initialTab();
         initialContent();
-        initPasswordProtection();
         loadData();
-    }
-    
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            protectionPassed = false;
-            protectionInfront = false;
-        }
-        return super.onKeyDown(keyCode, keyEvent);
+        
     }
 
-
-    private void initPasswordProtection() { 
-        final String password = Contexts.uiInstance().getPrefPassword();
-        if("".equals(password)||protectionPassed||protectionInfront){
-            return;
-        }
-        Intent intent = null;
-        intent = new Intent(this,PasswordProtectionActivity.class);
-        startActivityForResult(intent,Constants.REQUEST_PASSWORD_PROTECTION_CODE);
-        protectionInfront = true;
-    }
 
     private void initialApplicationInfo() {
         appinfo = i18n.string(R.string.app_name);
@@ -219,19 +198,8 @@ public class DesktopActivity extends ContextsActivity implements OnTabChangeList
     public void onActivityResult(int requestCode, int resultCode,
             Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        
-        if(requestCode == Constants.REQUEST_PASSWORD_PROTECTION_CODE){
-            protectionInfront = false;
-            if(resultCode!=RESULT_OK){
-                finish();
-                protectionPassed = false;
-            }else{
-                protectionPassed = true;
-            }
-        }else{
-            if(lastClickedItem!=null){
-                lastClickedItem.onActivityResult(requestCode, resultCode, data);
-            }
+        if(lastClickedItem!=null){
+            lastClickedItem.onActivityResult(requestCode, resultCode, data);
         }
     }
 
