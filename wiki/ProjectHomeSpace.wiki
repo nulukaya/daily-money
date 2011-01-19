@@ -4,12 +4,10 @@ This is a simple & easy financial android application.
 
 =Features=
  * Record your daily expense, income, asset and liability.
- * Show balance of money.
- * Export/Import to CSV
- * Money balance
-
-=Todo=
- * Chart
+ * Count balance of money.
+ * Export/Import to CSV.
+ * Balance pie chart & time chart.
+ * Password protection.
 
 =Download=
  * You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
@@ -17,9 +15,9 @@ This is a simple & easy financial android application.
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
 =Website=
-http://www.facebook.com/pages/Daily-Money/100393240038469
+ * http://www.facebook.com/pages/Daily-Money/100393240038469
 
-=Screenshoot=
+=Screenshoots=
 <table><tr><td>
 ===Main screen===
 http://daily-money.googlecode.com/svn/wiki/img/main.png
@@ -46,6 +44,13 @@ http://daily-money.googlecode.com/svn/wiki/img/prefs.png
 http://daily-money.googlecode.com/svn/wiki/img/report.png</td><td>
 ===Balance===
 http://daily-money.googlecode.com/svn/wiki/img/balance1.png</td>
+</tr><tr><td>
+===Balance pie chart===
+http://daily-money.googlecode.com/svn/wiki/img/balance_pie.png
+</td><td>
+===Balance time chart===
+http://daily-money.googlecode.com/svn/wiki/img/balance_time.png</td><td>
+</td>
 </tr></table>
 
 
