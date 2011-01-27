@@ -55,9 +55,9 @@ http://daily-money.googlecode.com/svn/wiki/img/balance_time.png</td><td>
 
 
 =3rd party open source library=
- * Calculator : from android 2.1 example code (LGPL)
- * Chart : http://code.google.com/p/achartengine/ (LGPL)
- * Chart : http://code.google.com/p/chartdroid/ (LGPL, I didn't use it, however it is still a good reference of chart library)
+ * Calculator : from android 2.1 example code (Apache License 2.0)
+ * Chart : http://code.google.com/p/achartengine/ (Apache License 2.0)
+ * Chart : http://code.google.com/p/chartdroid/ (Apache License 2.0), I didn't use it, however it is still a good reference of chart library)
 
 =Author=
 ==Dennis Chen==
