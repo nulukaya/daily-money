@@ -1,8 +1,10 @@
+#summary working page of main page
+
 This is a simple & easy financial android application.
 
 [ConceptOfDailyMoney Concept of daily-money] <br/>
-[How2useEN How to use daily-money(EN)] <br/>
-[How2useTw 如何使用每日記帳本(TW)] <br/>
+[How2UseEN How to use daily-money(EN)] <br/>
+[How2UseTw 如何使用每日記帳本(TW)] <br/>
 
 =Features=
  * Record your daily expense, income, asset and liability.
