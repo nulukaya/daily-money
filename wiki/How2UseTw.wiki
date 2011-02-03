@@ -27,22 +27,22 @@
 ===薪水直接到銀行===
 *從帳戶:* 薪水<br/>
 *到帳戶:* 銀行
-===Bank to Cash===
+===從銀行領錢===
 *從帳戶:* 銀行<br/>
 *到帳戶:* 現金
-===Buy stuff by credit card===
+===用信用卡買東西===
 *從帳戶:* 信用卡<br/>
 *到帳戶:*  某個花費帳戶
-===Pay credit card bill by Cash===
+===現金付信用戶帳單===
 *從帳戶:* 現金<br/>
 *到帳戶:* 信用卡
 
-==Balance Reports==
-===Ranged Balance===
-In ranged balance reports, I count balance of all the details that you created. The balance is calculated in a time range (current week, current month, current year, or you can change to other range by click the arrow button)
+==結算報告==
+===時間區間的結算報告===
+結算報告是使用你建立的資料來統計計算出來的，並依本周,本月,本年來呈現。你可以點選報告的上方按鈕來改變時間的位置
 
-===Cumulated Balance Reports===
-To calculate cumulate balance (ex, how much money I have now, how much cash I have now), you have to set a initial value to a account(normally _Asset_ or _Liability_ type accounts have non-zero initial value. _Income_ and _Expense_ type account should have no initial value). <br/>
-If you forgot to set initial value of an account, there is a simple way to adjust it. for example ,"I have cash 333, but cumulated balance reports shows I have cash -100)
- * edit cash account
- * set initial value of cash to 433 (333 - (-100) )
+===累加的結算報告===
+當你想知道你目前有多少現金, 目前有多少資產, 而不是這個月花多少的時候，你會需要使用累加的結算報告。要讓累加的結果報告正確計算，你必需設定每個帳號的初始金額(通常只有_資產_跟_債務_會有初始值. _收入_跟_支出_是不會有初始值的)<br/>
+如果你沒有設定初始值的話，有一個簡單的方法可以算出你的初始值。例如：你現在的現金有333, 但是累加結算報告顯示你的現金是-100)
+ * 編輯現金帳戶
+ * 設定初始值為433 (333 - (-100) )
