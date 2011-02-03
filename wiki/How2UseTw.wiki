@@ -1,0 +1,48 @@
+#summary how to use daily-money (tw)
+==概念==
+每日記帳本的主要概念很簡單, 只有兩個
+ # 各種不同的帳戶(依你的需要而定)
+ # 錢在在不同帳戶之間的轉換(你必需為每一次的交易,花費作記錄)
+
+==帳戶=
+共有五種不同型態的帳戶, 你可以在帳戶管理的頁面新增/編輯或刪除
+ # _收入_: 薪水..等
+ # _支出_: 食物,娛樂..等
+ # _資產_: 現金, 銀行..等
+ # _債務_: 信用戶, 貸款..等
+ # _其他_: ..
+
+==轉換明細==
+當你的錢發生了轉換(例如你花了139元去賣當老吃飯), 你使用主桌面的_新增明細_上的功能來建立一筆新的資料
+ # 選擇來源帳戶 : 現金
+ # 選擇目地帳戶 : 食物
+ # 選擇日期 : _今天_
+ # 輸入金額 : 139
+ # 輸入描述 : 賣當老午餐
+ # 點選建立，然後點選關閉(如果只需建立一筆)
+
+上面只是一個非常簡單的例子, 想像一下, 如果你的薪水是直接匯入銀行 或是你在Y拍上用信用卡買東西，本日記帳幫都可以幫您作記錄。你可以在上面的五種型態的帳戶類型中，任意建立你需要的帳戶。
+
+==使用範例==
+===薪水直接到銀行===
+*從帳戶:* 薪水<br/>
+*到帳戶:* 銀行
+===Bank to Cash===
+*從帳戶:* 銀行<br/>
+*到帳戶:* 現金
+===Buy stuff by credit card===
+*從帳戶:* 信用卡<br/>
+*到帳戶:*  某個花費帳戶
+===Pay credit card bill by Cash===
+*從帳戶:* 現金<br/>
+*到帳戶:* 信用卡
+
+==Balance Reports==
+===Ranged Balance===
+In ranged balance reports, I count balance of all the details that you created. The balance is calculated in a time range (current week, current month, current year, or you can change to other range by click the arrow button)
+
+===Cumulated Balance Reports===
+To calculate cumulate balance (ex, how much money I have now, how much cash I have now), you have to set a initial value to a account(normally _Asset_ or _Liability_ type accounts have non-zero initial value. _Income_ and _Expense_ type account should have no initial value). <br/>
+If you forgot to set initial value of an account, there is a simple way to adjust it. for example ,"I have cash 333, but cumulated balance reports shows I have cash -100)
+ * edit cash account
+ * set initial value of cash to 433 (333 - (-100) )
