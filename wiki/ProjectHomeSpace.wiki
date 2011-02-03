@@ -1,6 +1,8 @@
 This is a simple & easy financial android application.
 
-[ConceptOfDailyMoney Concept of daily-money]
+[ConceptOfDailyMoney Concept of daily-money] <br/>
+[How2useEN How to use daily-money(EN)] <br/>
+[How2useTw 如何使用每日記帳本(TW)] <br/>
 
 =Features=
  * Record your daily expense, income, asset and liability.
@@ -8,6 +10,8 @@ This is a simple & easy financial android application.
  * Export/Import to CSV.
  * Balance pie chart & time chart.
  * Password protection.
+
+
 
 =Download=
  * You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
