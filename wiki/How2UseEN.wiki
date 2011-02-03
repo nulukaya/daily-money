@@ -5,15 +5,15 @@ The concept of daily money is very simple
  # Money transaction between accounts. (you record detail for each transaction)
 
 ==Accounts=
-There are 5 types account, you can create/edit/delete it in account manager page.
- # Income: salary etc..
- # Expense: food, entertainment etc.
- # Asset: cash, bank
- # Liability: credit card, loan.
- # Other: ...role is like a asset.
+There are 5 types account, you can create/edit/delete it in Account Manager page.
+ # _Income_: salary etc..
+ # _Expense_: food, entertainment etc.
+ # _Asset_: cash, bank
+ # _Liability_: credit card, loan.
+ # _Other_: ...role is like a asset.
 
 ==The transaction detail==
-When you spent some money then you can click the Add Detail on the main page to create a new record. for example you spent $10 bought a meal, in Detail Editor page, you
+When you spent some money then you can click the Add Detail on the Main page to create a new record. for example you spent $10 bought a meal, in Detail Editor page, you
  # select from account :Cash
  # select to account : Food
  # select date : today
@@ -21,24 +21,28 @@ When you spent some money then you can click the Add Detail on the main page to 
  # input description : hot dog, coke.
  # click create then click close if no more transaction needs to be created.
 
-above is a very simple use case of daily-money, but consider what if your salary is deposit to bank directly, you use credit card buy books on inter-net. so you could create various accounts against 5 account type.
+above is a very simple use case of daily-money, but, what if your salary is deposit to bank directly, you use credit card buy books on internet? daily-money provide different type of account s, and you could create various accounts against 5 account type.
 
 ==Use cases==
 ===Salary to Bank===
-From: Salary
-To: Bank
+*From:* Salary<br/>
+*To:* Bank
 ===Bank to Cash===
-From: Bank
-To: Cash
+*From:* Bank<br/>
+*To:* Cash
 ===Buy stuff by credit card===
-From: Credit card
-To: Stuff in expense
+*From:* Credit card<br/>
+*To:* Stuff in expense
 ===Pay credit card bill by Cash===
-From: Cash
-To: Credit card
+*From:* Cash<br/>
+*To:* Credit card
 
-==Balance==
-In balance reports, I count balance of all the details that you created. The balance is calculated in a time range (current week, current monthly, current year, or you can change to other range by click the arrow button)
+==Balance Reports==
+===Ranged Balance===
+In ranged balance reports, I count balance of all the details that you created. The balance is calculated in a time range (current week, current monthly, current year, or you can change to other range by click the arrow button)
 
-
-To calculate the balance of accounts.
+===Cumulated Balance Reports===
+To calculate cumulate balance (ex, how much money I have now, how much cash I have now), you have to set a initial value to a account(normally _Asset_ or _Liability_ type accounts have non-zero initial value. _Income_ and _Expense_ type account should have no initial value). <br/>
+If you forgot to set initial value of an account, there is a simple way to adjust it. for example ,"I have cash 333, but cumulated balance reports shows I have cash -100)
+ * edit cash account
+ * set initial value of cash to 433 (333 - (-100) )
