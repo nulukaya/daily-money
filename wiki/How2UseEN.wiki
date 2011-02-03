@@ -44,5 +44,5 @@ In ranged balance reports, I count balance of all the details that you created. 
 ===Cumulated Balance Reports===
 To calculate cumulate balance (ex, how much money I have now, how much cash I have now. not how much I spent this week), you have to set a initial value to a account(normally _Asset_ or _Liability_ type accounts have non-zero initial value. _Income_ and _Expense_ type account should have no initial value). <br/>
 If you forgot to set initial value of an account, there is a simple way to adjust it. for example ,"I have cash 333, but cumulated balance reports shows I have cash -100)
- * edit cash account
- * set initial value of cash to 433 (333 - (-100) )
+ # edit cash account
+ # set initial value of cash to 433 (333 - (-100) )
