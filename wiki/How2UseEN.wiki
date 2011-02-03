@@ -1,4 +1,4 @@
-# how to use daily-money (en)
+#summary how to use daily-money (en)
 ==Concept==
 The concept of daily money is very simple
  # Different accounts (you create accounts depends on your case)
