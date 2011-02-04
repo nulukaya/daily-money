@@ -17,7 +17,7 @@ This is a simple & easy financial android application.
 
 =Download=
  * You can download apk file here : http://code.google.com/p/daily-money/downloads/list <br/>
- * From appbrain : http://www.appbrain.com/app/daily-money/com.bottleworks.dailymoney<br/>
+ * From market : https://market.android.com/details?id=com.bottleworks.dailymoney<br/>
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://www.appbrain.com/app/com.bottleworks.dailymoney?install=web&kkk=kkk.png
 
 =Website=
