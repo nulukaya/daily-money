@@ -12,7 +12,7 @@ There are 5 types account, you can create/edit/delete it in Account Manager page
  # _Liability_: credit card, loan.
  # _Other_: ...role is like a asset.
 
- * To sort your account, you just add 1,2.. or A.B as the prefix of name of account.
+ * To sort your account, you just add 1,2,.. or A.B,.. as the prefix of name of account.
 
 ==The transaction detail==
 When you spent some money then you can click the Add Detail on the Main page to create a new record. for example you spent $10 bought a meal, in Detail Editor page, you
