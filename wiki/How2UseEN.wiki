@@ -13,6 +13,7 @@ There are 5 types account, you can create/edit/delete it in Account Manager page
  # _Other_: ...role is like a asset.
 
  * To sort your account, you just add 1,2,.. or A.B,.. as the prefix of name of account.
+ * (Since 0.9.5)Supports hierarchical account name(by .[dot], Ex: Food.lunch, Food.dinner). When editing transaction detail, it provides better selecting of account.
 
 ==The transaction detail==
 When you spent some money then you can click the Add Detail on the Main page to create a new record. for example you spent $10 bought a meal, in Detail Editor page, you
