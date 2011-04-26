@@ -81,6 +81,9 @@ I think you would be happy if you can use a application daily that has your cont
 
 =Contributors=
 
+==Language==
+ * zh_CN : Lisheng Guan & Benji
+ * ru : Kirill Zasorin
 
 =3rd party open source library=
  * Calculator : from android 2.1 example code (Apache License 2.0)
